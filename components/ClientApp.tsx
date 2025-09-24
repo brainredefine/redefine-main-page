@@ -1,22 +1,34 @@
 "use client";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
-export default function ClientApp({ sections }: { sections: any }) {
+type LinkItem = {
+  title: string;
+  description: string;
+  href: string;
+  image?: string;
+};
+
+type Section = {
+  title: string;
+  links: LinkItem[];
+};
+
+export default function ClientApp({ sections }: { sections: Section[] }) {
   const [query, setQuery] = useState("");
 
-  const filtered = useMemo(() => {
+  const filtered = useMemo<Section[]>(() => {
     const q = query.trim().toLowerCase();
     if (!q) return sections;
-    return sections
-      .map((s: any) => ({
-        ...s,
-        links: s.links.filter(
-          (l: any) =>
-            l.title.toLowerCase().includes(q) ||
-            l.description.toLowerCase().includes(q)
-        ),
-      }))
-      .filter((s: any) => s.links.length > 0);
+    const mapped = sections.map((s) => ({
+      ...s,
+      links: s.links.filter(
+        (l) =>
+          l.title.toLowerCase().includes(q) ||
+          l.description.toLowerCase().includes(q)
+      ),
+    }));
+    return mapped.filter((s) => s.links.length > 0);
   }, [query, sections]);
 
   return (
@@ -47,13 +59,13 @@ export default function ClientApp({ sections }: { sections: any }) {
           <p className="text-zinc-400">No results. Try another search.</p>
         ) : (
           <div className="space-y-10">
-            {filtered.map((section: any) => (
+            {filtered.map((section) => (
               <section key={section.title}>
                 <h2 className="mb-4 text-lg font-medium text-zinc-200">
                   {section.title}
                 </h2>
                 <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {section.links.map((link: any) => (
+                  {section.links.map((link) => (
                     <li key={link.title}>
                       <a
                         href={link.href}
@@ -61,11 +73,14 @@ export default function ClientApp({ sections }: { sections: any }) {
                       >
                         {link.image && (
                           <div className="mb-3 overflow-hidden rounded-xl border border-white/10">
-                            <img
+                            {/* Dimensions raisonnables pour des images de /public */}
+                            <Image
                               src={link.image}
                               alt=""
+                              width={1200}
+                              height={630}
                               className="h-35 w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                              loading="lazy"
+                              priority={false}
                             />
                           </div>
                         )}
