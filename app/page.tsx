@@ -28,28 +28,28 @@ const SECTIONS = [
         description:
           "xxx",
         href: "https://www.hello-world.com/",
-        image: "https://www.forbes.com/advisor/wp-content/uploads/2021/06/best_website_builders_image-1.jpg", // /public/normal-view.jpg
+        image: "", // /public/normal-view.jpg
       },
                   {
         title: "PM Offer creation",
         description:
           "xxx",
         href: "https://www.hello-world.com/",
-        image: "https://www.forbes.com/advisor/wp-content/uploads/2021/06/best_website_builders_image-1.jpg", // /public/normal-view.jpg
+        image: "", // /public/normal-view.jpg
       },
                         {
         title: "Lease Contract Checker",
         description:
           "xxx",
         href: "https://www.hello-world.com/",
-        image: "https://www.forbes.com/advisor/wp-content/uploads/2021/06/best_website_builders_image-1.jpg", // /public/normal-view.jpg
+        image: "", // /public/normal-view.jpg
       },
                   {
         title: "Reporting Generator",
         description: "xxx",
         href: "https://main.redefine.opa.as/",
         image:
-          "https://www.forbes.com/advisor/wp-content/uploads/2021/06/best_website_builders_image-1.jpg",
+          "",
       },
                         {
         title: "Fees Calculator",
@@ -57,6 +57,13 @@ const SECTIONS = [
         href: "https://fees-calculator-jhzq.vercel.app/",
         image:
           "/feecalculator.png",
+      },
+                            {
+        title: "Lease end information",
+        description: "To calculate our fees when we have a new tenant (New) or a new contract with an existing tenant (Renewal)",
+        href: "https://end-lease-dashboard.vercel.app/",
+        image:
+          "/leaseend.png",
       },
     ],
   },
