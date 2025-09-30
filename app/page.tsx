@@ -44,26 +44,26 @@ const SECTIONS = [
         href: "https://www.hello-world.com/",
         image: "", // /public/normal-view.jpg
       },
-                  {
-        title: "Reporting Generator",
-        description: "xxx",
-        href: "https://main.redefine.opa.as/",
-        image:
-          "",
-      },
                         {
         title: "Fees Calculator",
-        description: "To calculate our fees when we have a new tenant (New) or a new contract with an existing tenant (Renewal)",
+        description: "To calculate our fees when we have a new tenant (New) or a new contract with an existing tenant (Renewal).",
         href: "https://fees-calculator-jhzq.vercel.app/",
         image:
           "/feecalculator.png",
       },
                             {
         title: "Lease end information",
-        description: "To calculate our fees when we have a new tenant (New) or a new contract with an existing tenant (Renewal)",
+        description: "A list of upcoming lease expirations for each asset manager.",
         href: "https://end-lease-dashboard.vercel.app/",
         image:
           "/leaseend.png",
+      },
+                                  {
+        title: "Rent Roll & Asset Tape Generator",
+        description: "To generate Asset Tapes, Rent Rolls, by fund, asset manager or ID. Can be adapted to Slate format.",
+        href: "https://reporting-special.vercel.app/",
+        image:
+          "/assetrr.png",
       },
     ],
   },
