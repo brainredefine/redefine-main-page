@@ -65,6 +65,20 @@ const SECTIONS = [
         image:
           "/assetrr.png",
       },
+                                    {
+        title: "Google Drive Storage",
+        description: "When you want to PUT data in.",
+        href: "https://drive.google.com/drive/u/0/folders/1h1Esfbj2WYmkuZSH1cPSljkQvx7FuSnB",
+        image:
+          "",
+      },
+                                        {
+        title: "Document finder",
+        description: "When you want to find a document or several of them quickly.",
+        href: "https://script.google.com/a/macros/redefine.group/s/AKfycbw3krccCk_XzjsV8kzFD-hd3v3Th5LzpUWGuP5UOH6Hw4_eMB8CNXKEPk2mmc6GmqPt/exec",
+        image:
+          "",
+      },
     ],
   },
   {
