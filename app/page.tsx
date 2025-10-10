@@ -65,6 +65,13 @@ const SECTIONS = [
         image:
           "/assetrr.png",
       },
+                                          {
+        title: "Dauermietrechnung Generator",
+        description: "To create Dauermietrechnung out of the invoice number alone.",
+        href: "https://dmr-one.vercel.app/",
+        image:
+          "",
+      },
                                     {
         title: "Google Drive Storage",
         description: "When you want to PUT data in.",
