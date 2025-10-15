@@ -14,14 +14,14 @@ const SECTIONS = [
         description: "AM vs PM + updated comments.",
         href: "https://rr-abgleich.vercel.app",
         image:
-          "/rrabgleich2.png",
+          "",
       },
       {
         title: "Facility Management Checklist",
         description:
           "When you are on site to rate the outlook of an asset, a building.",
         href: "https://facilitymanagementchecklist-psi.vercel.app/",
-        image: "/facilitymanagement.png", // /public/normal-view.jpg
+        image: "", // /public/normal-view.jpg
       },
             {
         title: "Cost & Capex Estimation",
@@ -49,14 +49,14 @@ const SECTIONS = [
         description: "To calculate our fees when we have a new tenant (New) or a new contract with an existing tenant (Renewal).",
         href: "https://fees-calculator-jhzq.vercel.app/",
         image:
-          "/feecalculator.png",
+          "",
       },
                             {
         title: "Lease end information",
         description: "A list of upcoming lease expirations for each asset manager.",
         href: "https://end-lease-dashboard.vercel.app/",
         image:
-          "/leaseend.png",
+          "",
       },
                                   {
         title: "Indexation",
@@ -70,7 +70,7 @@ const SECTIONS = [
         description: "To generate Asset Tapes, Rent Rolls, by fund, asset manager or ID. Can be adapted to Slate format.",
         href: "https://reporting-special.vercel.app/",
         image:
-          "/assetrr.png",
+          "",
       },
                                           {
         title: "Dauermietrechnung Generator",
