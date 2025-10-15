@@ -12,7 +12,7 @@ const SECTIONS = [
       {
         title: "RR Abgleich",
         description: "AM vs PM + updated comments.",
-        href: "https://rr-five-chi.vercel.app/rr/overview",
+        href: "https://rr-abgleich.vercel.app",
         image:
           "/rrabgleich2.png",
       },
@@ -57,6 +57,13 @@ const SECTIONS = [
         href: "https://end-lease-dashboard.vercel.app/",
         image:
           "/leaseend.png",
+      },
+                                  {
+        title: "Indexation",
+        description: "A list of possible indexations.",
+        href: "https://indexation.vercel.app",
+        image:
+          "",
       },
                                   {
         title: "Rent Roll & Asset Tape Generator",
