@@ -23,25 +23,11 @@ const SECTIONS = [
         href: "https://facilitymanagementchecklist-psi.vercel.app/",
         image: "", // /public/normal-view.jpg
       },
-            {
-        title: "Cost & Capex Estimation",
+      {
+        title: "Mangelmeldung - Property Management",
         description:
-          "xxx",
-        href: "https://www.hello-world.com/",
-        image: "", // /public/normal-view.jpg
-      },
-                  {
-        title: "PM Offer creation",
-        description:
-          "xxx",
-        href: "https://www.hello-world.com/",
-        image: "", // /public/normal-view.jpg
-      },
-                        {
-        title: "Lease Contract Checker",
-        description:
-          "xxx",
-        href: "https://www.hello-world.com/",
+          "Ticketsystem from the tenants",
+        href: "https://mangel.vercel.app/dashboard",
         image: "", // /public/normal-view.jpg
       },
                         {
@@ -65,31 +51,17 @@ const SECTIONS = [
         image:
           "",
       },
-                                  {
-        title: "Rent Roll & Asset Tape Generator",
-        description: "To generate Asset Tapes, Rent Rolls, by fund, asset manager or ID. Can be adapted to Slate format.",
-        href: "https://reporting-special.vercel.app/",
-        image:
-          "",
-      },
-                                          {
-        title: "Dauermietrechnung Generator",
-        description: "To create Dauermietrechnung out of the invoice number alone.",
-        href: "https://dmr-one.vercel.app/",
-        image:
-          "",
-      },
                                     {
-        title: "Google Drive Storage",
-        description: "When you want to PUT data in.",
-        href: "https://drive.google.com/drive/u/0/folders/1h1Esfbj2WYmkuZSH1cPSljkQvx7FuSnB",
+        title: "Storage System",
+        description: "When you want to PUT data in our internal system - Only for PM mandate for now",
+        href: "https://storage-sigma-one.vercel.app/",
         image:
           "",
       },
                                         {
         title: "Document finder",
-        description: "When you want to find a document or several of them quickly.",
-        href: "https://script.google.com/a/macros/redefine.group/s/AKfycbw3krccCk_XzjsV8kzFD-hd3v3Th5LzpUWGuP5UOH6Hw4_eMB8CNXKEPk2mmc6GmqPt/exec",
+        description: "When you want to find a document or several of them quickly - Only for PM mandate for now",
+        href: "https://storage-sigma-one.vercel.app/get",
         image:
           "",
       },
