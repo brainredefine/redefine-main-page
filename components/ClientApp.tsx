@@ -1,12 +1,11 @@
 "use client";
-import Image from "next/image";
-import { useMemo, useState } from "react";
 
 type LinkItem = {
   title: string;
   description: string;
   href: string;
-  image?: string;
+  lastUpdate?: string;
+  statusColor?: string; // "green" | "orange" | "red" etc.
 };
 
 type Section = {
@@ -15,90 +14,79 @@ type Section = {
 };
 
 export default function ClientApp({ sections }: { sections: Section[] }) {
-  const [query, setQuery] = useState("");
+  
+  // Fonction pour obtenir les initiales (ex: "Facility Management" -> "Fa")
+  const getInitials = (text: string) => text.substring(0, 2).toUpperCase();
 
-  const filtered = useMemo<Section[]>(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return sections;
-    const mapped = sections.map((s) => ({
-      ...s,
-      links: s.links.filter(
-        (l) =>
-          l.title.toLowerCase().includes(q) ||
-          l.description.toLowerCase().includes(q)
-      ),
-    }));
-    return mapped.filter((s) => s.links.length > 0);
-  }, [query, sections]);
+  // Fonction pour gérer la couleur du point
+  const getStatusColorClass = (color?: string) => {
+    switch (color) {
+      case "orange":
+        return "bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]"; // Orange avec lueur
+      case "red":
+        return "bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]"; // Rouge avec lueur
+      default:
+        return "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"; // Vert par défaut
+    }
+  };
 
   return (
-    <main className="min-h-screen bg-black text-zinc-100">
-      {/* gradient blobs */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-24 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-gradient-to-tr from-emerald-400/20 via-sky-400/20 to-fuchsia-400/20 blur-3xl" />
-        <div className="absolute -bottom-24 right-1/2 h-[36rem] w-[36rem] translate-x-1/3 rounded-full bg-gradient-to-tr from-fuchsia-400/10 via-amber-400/10 to-emerald-400/10 blur-3xl" />
-      </div>
+    <div className="space-y-12">
+      {sections.map((section) => (
+        <section key={section.title} className="space-y-6">
+          
+          {/* Titre de section minimaliste */}
+          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider pl-1">
+            {section.title}
+          </h2>
 
-      <div className="mx-auto max-w-6xl px-6 pb-20 pt-14">
-        <header className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Welcome!
-          </h1>
-          <div className="relative w-full max-w-md">
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search links…"
-              className="w-full rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-zinc-100 outline-none placeholder:text-zinc-400 backdrop-blur transition focus:border-white/20 focus:bg-white/10"
-            />
-            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5" />
-          </div>
-        </header>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {section.links.map((link) => (
+              <a
+                key={link.title}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col bg-white border border-gray-200 rounded-xl p-5 hover:border-gray-300 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 relative"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  {/* Badge Initiales (Remplace l'image moche) */}
+                  <div className="w-10 h-10 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-700 font-bold text-sm tracking-tight group-hover:bg-gray-100 group-hover:text-gray-900 transition-colors">
+                    {getInitials(link.title)}
+                  </div>
 
-        {filtered.length === 0 ? (
-          <p className="text-zinc-400">No results. Try another search.</p>
-        ) : (
-          <div className="space-y-10">
-            {filtered.map((section) => (
-              <section key={section.title}>
-                <h2 className="mb-4 text-lg font-medium text-zinc-200">
-                  {section.title}
-                </h2>
-                <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {section.links.map((link) => (
-                    <li key={link.title}>
-                      <a
-                        href={link.href}
-                        className="group block h-full rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_1px_0_0_rgba(255,255,255,0.05)_inset] backdrop-blur transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10 hover:shadow-xl"
-                      >
-                        {link.image && (
-                          <div className="mb-3 overflow-hidden rounded-xl border border-white/10">
-                            {/* Dimensions raisonnables pour des images de /public */}
-                            <Image
-                              src={link.image}
-                              alt=""
-                              width={1200}
-                              height={630}
-                              className="h-35 w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                              priority={false}
-                            />
-                          </div>
-                        )}
-                        <h3 className="text-base font-semibold text-zinc-50">
-                          {link.title}
-                        </h3>
-                        <p className="mt-1 text-xs leading-relaxed text-zinc-400">
-                          {link.description}
-                        </p>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </section>
+                  {/* Flèche qui apparait au hover */}
+                  <span className="opacity-0 group-hover:opacity-100 text-gray-400 transition-opacity transform translate-x-[-5px] group-hover:translate-x-0">
+                    ↗
+                  </span>
+                </div>
+
+                {/* Titre */}
+                <h3 className="font-semibold text-gray-900 text-base mb-1">
+                  {link.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-gray-500 leading-relaxed mb-6 line-clamp-2">
+                  {link.description}
+                </p>
+
+                {/* Footer : Last Update + Status Dot */}
+                {link.lastUpdate && (
+                  <div className="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
+                    <span className="text-[11px] font-medium text-gray-400">
+                      Updated {link.lastUpdate}
+                    </span>
+                    
+                    {/* Le fameux point de couleur plus gros */}
+                    <div className={`w-2.5 h-2.5 rounded-full ${getStatusColorClass(link.statusColor)}`}></div>
+                  </div>
+                )}
+              </a>
             ))}
           </div>
-        )}
-      </div>
-    </main>
+        </section>
+      ))}
+    </div>
   );
 }
