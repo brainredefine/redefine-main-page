@@ -43,7 +43,7 @@ const SECTIONS = [
         description: "A list of upcoming lease expirations.",
         href: "https://end-lease-dashboard.vercel.app/",
         lastUpdate: "29.09.2025",
-        statusColor: "red", // Rouge pour signaler l'urgence/attention
+        statusColor: "green", // Rouge pour signaler l'urgence/attention
       },
       {
         title: "Indexation",
